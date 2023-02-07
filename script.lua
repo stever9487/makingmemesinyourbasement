@@ -9,3 +9,6 @@ for i, v in pairs(game:GetService("Workspace").Tycoons:GetChildren()) do
         main:Label("tycoon: "..v.Name)
     end
 end
+if tycoon == nil then
+    library:Notification("Error!", "You don\'t own a tycoon!", "idot")
+end
