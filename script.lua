@@ -4,7 +4,7 @@ local server = window:Server("main", "")
 local main = server:Channel("main")
 local tycoon
 for i, v in pairs(game:GetService("Workspace").Tycoons:GetChildren()) do
-    if v:FindFirstChild("TycoonOwner").Value == game:GetService("Players").LocalPlayer.Name then
+    if v.Name:sub(1, 6) == "Tycoon" and v:FindFirstChild("TycoonOwner").Value == game:GetService("Players").LocalPlayer.Name then
         tycoon = v
         main:Label("tycoon: "..v.Name)
     end
@@ -14,8 +14,8 @@ if tycoon == nil then
 end
 main:Toggle("Insta-Upload", false, function(value)
     _G.InstaUploadEnabled = value
-    while _G.AutoFeedEnabled do
-        game:GetService("ReplicatedStorage").Events:FindFirstChild("UploadCurrentMemes"):FireServer()
+    while _G.InstaUploadEnabled do
+        game:GetService("ReplicatedStorage").Events.UploadCurrentMemes:FireServer()
         wait()
     end
 end)
