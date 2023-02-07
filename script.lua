@@ -12,9 +12,10 @@ end
 if tycoon == nil then
     library:Notification("Error!", "You don\'t own a tycoon!", "idot")
 end
-main:Toggle("Insta-Upload", false, function(value)
-    _G.InstaUploadEnabled = value
-    while _G.InstaUploadEnabled do
+main:Toggle("Auto-Upload", false, function(value)
+    _G.AutoUploadEnabled = value
+    while _G.AutoUploadEnabled do
+        game:GetService("ReplicatedStorage").Events.MemeToStorage:FireServer()
         game:GetService("ReplicatedStorage").Events.UploadCurrentMemes:FireServer()
         wait()
     end
