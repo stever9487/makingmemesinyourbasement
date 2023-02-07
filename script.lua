@@ -26,5 +26,17 @@ main:Toggle("Auto-Collect", false, function(value)
         fireproximityprompt(tycoon.StaticItems.Belt1.Collect.CollectPart.ProximityPrompt)
         fireproximityprompt(tycoon.StaticItems.Belt2.Collect.CollectPart.ProximityPrompt)
         fireproximityprompt(tycoon.StaticItems.Belt3.Collect.CollectPart.ProximityPrompt)
+        wait()
+    end
+end)
+main:Toggle("Auto-Smack", false, function(value)
+    _G.AutoSmackEnabled = value
+    while _G.AutoSmackEnabled do
+        for i, v in pairs(tycoon.Items:GetChildren()) do
+            if v.Name:sub(1, 7) == "Dropper" and v.Sleeping.Value == true then
+                fireproximityprompt(v.Noob.Torso.ProximityPrompt)
+            end
+        end
+        wait()
     end
 end)
