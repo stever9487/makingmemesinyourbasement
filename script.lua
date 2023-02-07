@@ -20,3 +20,11 @@ main:Toggle("Auto-Upload", false, function(value)
         wait()
     end
 end)
+main:Toggle("Auto-Collect", false, function(value)
+    _G.AutoCollectEnabled = value
+    while _G.AutoCollectEnabled do
+        fireproximityprompt(tycoon.StaticItems.Belt1.Collect.CollectPart.ProximityPrompt)
+        fireproximityprompt(tycoon.StaticItems.Belt2.Collect.CollectPart.ProximityPrompt)
+        fireproximityprompt(tycoon.StaticItems.Belt3.Collect.CollectPart.ProximityPrompt)
+    end
+end)
